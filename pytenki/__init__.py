@@ -18,3 +18,17 @@ standard library as possible. :)
 
 """
 __version__ = "0.1.0"
+
+import urllib.request
+
+
+class WttrClient:
+    base_url = "https://wttr.in"
+    headers = {"User-Agent": "curl"}
+
+    def get(self):
+        req = urllib.request.Request(url=self.base_url, headers=self.headers)
+        resp = urllib.request.urlopen(url=req)
+        data = resp.read().decode("utf8")
+
+        return data
