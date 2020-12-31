@@ -14,7 +14,7 @@ def client():
 
 
 def test_client_get(client):
-    data = client.get()
+    data = client.get().decode("utf8")
 
     assert "Morning" in data
     assert "Noon" in data
@@ -23,6 +23,6 @@ def test_client_get(client):
 
 
 def test_client_get_in_german(client):
-    data = client.get(lang="de")
+    data = client.get(lang="de").decode("utf8")
 
     assert "Früh" in data
